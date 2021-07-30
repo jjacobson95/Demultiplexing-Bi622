@@ -19,7 +19,9 @@
     
 ## Part 2
 1. Define the problem
+```
 From four files, determine which reads have the correct indexes, swapped indexes, or low-quality indexes. 
+```
 2. Describe output
 ```
 	52 output files:
@@ -32,7 +34,9 @@ From four files, determine which reads have the correct indexes, swapped indexes
 ```
 
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
-``` Done ```
+``` 
+Done
+```
 4. Pseudocode including functions:
 ```
 •Create 4 test files with 20,000 lines in each of them for general use.
