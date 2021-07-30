@@ -35,7 +35,8 @@ Index 2
 
 
     3. ```Cutoff of 20 seems reasonable. This way we would retain most of the data, but still keep it at high quality (99% or greater)```
-    4. ```Using the command: zcat 1294_S1_L008_R2_001.fastq.gz 1294_S1_L008_R3_001.fastq.gz| sed -n '2~4p' | awk '{print FNR, $0}' | grep -E [Nn] | sort | uniq -c | sort | awk '{print NR,$2}' | wc -l
+    4. ```Using the one-line command:
+    zcat 1294_S1_L008_R2_001.fastq.gz 1294_S1_L008_R3_001.fastq.gz| sed -n '2~4p' | awk '{print FNR, $0}' | grep -E [Nn] | sort | uniq -c | sort | awk '{print NR,$2}' | wc -l
 		Answer: 7304664 indexes
        ```
     
