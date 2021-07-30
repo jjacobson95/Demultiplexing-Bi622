@@ -13,7 +13,8 @@
 2. Per-base NT distribution
     1. Use markdown to insert your 4 histograms here.
 
-![Test Image 1](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R1.png 450)
+![Test Image 1](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R1.png)
+<img src=“https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R1.png”>
 
 
     3. ```Cutoff of 20 seems reasonable. This way we would retain most of the data, but still keep it at high quality (99% or greater)```
