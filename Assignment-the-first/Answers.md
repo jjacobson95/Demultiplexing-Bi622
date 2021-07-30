@@ -13,13 +13,22 @@
 2. Per-base NT distribution
     1. Use markdown to insert your 4 histograms here.
 
+``` 
 Read 1
+```
+
 ![Image 1](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R1.png)
+``` 
 Read 2
+```
 ![Image 2](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R4.png)
+``` 
 Index 1
+```
 ![Image 3](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R2.png)
+``` 
 Index 2
+```
 ![Image 4](https://github.com/jjacobson95/Demultiplexing-Bi622/blob/master/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R3.png)
 
 
