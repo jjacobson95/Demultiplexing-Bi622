@@ -27,11 +27,6 @@ medians_list = []
 Bioinfo.init_list(medians_list)
 
 count = 0
-# print("line_count =", line_count)
-# print(type(line_count[0]))
-# print(type(sums_list))
-# print(type(sums_list[0]))
-# print(sums_list)
 
 for value in sums_list:
     medians_list[count] = value/(line_count/4)
@@ -44,7 +39,4 @@ plt.ylabel('Quality Score Mean')
 plt.grid(True)
 plt.savefig("/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R4.png")
 plt.show()
-
-
-
 
