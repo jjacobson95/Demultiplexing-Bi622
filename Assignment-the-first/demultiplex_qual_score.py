@@ -6,9 +6,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 
-#use -r filename
-args = Bioinfo.get_file_name()
-file = args.r
+#argparse. 
+parser = argparse.ArgumentParser()
+parser.add_argument("-R_file", default=1)
+
+args = parser.parse_args()
+file = args.R_file
+
 
 #path locations
 # read_file_1 = "/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz"
@@ -27,16 +31,24 @@ medians_list = []
 Bioinfo.init_list(medians_list)
 
 count = 0
-
 for value in sums_list:
-    medians_list[count] = value/(line_count/4)
+    sums_list[count] = value/(line_count[0]/4)
     count += 1
 
-plt.bar(range(101), medians_list)
+
+
+plt.bar(range(101), fred_list)
 plt.title('Quality Score Distribution')
 plt.xlabel('Base Number')
 plt.ylabel('Quality Score Mean')
 plt.grid(True)
-plt.savefig("/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R4.png")
+plt.savefig("/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R2.png")
 plt.show()
+
+
+
+
+
+
+
 

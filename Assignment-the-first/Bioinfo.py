@@ -3,20 +3,33 @@
 DNA_bases ="GgCcAaTtNn"
 RNA_bases ="GgCcAaUuNn"
 
+<<<<<<< HEAD
+def init_list(lst: list, value: float=0.0) -> list:
+    '''This function takes an empty list and will populate it with
+    the value passed in "value". If no value is passed, initializes list
+    with 101 values of 0.0.'''
+=======
 
 def init_list(lst: list, value: float=0.0) -> list:
     '''This function takes an empty list and will populate it with
     the value passed in "value". If no value is passed, initializes list
     with 101 (now 8) values of 0.0.'''
+>>>>>>> ebe43797d7080511384a01cc445bc35fe9d414e3
     for i in range(101):
         lst.append(value)
     return lst
 
+<<<<<<< HEAD
+def convert_phred(letter):
+=======
 def convert_phred(letter: str) -> int:
+>>>>>>> ebe43797d7080511384a01cc445bc35fe9d414e3
     """Converts a single character into a phred score"""
     llama =(ord(letter)-33)
     return llama
 
+<<<<<<< HEAD
+=======
 def populate_list(file):
     """This function parses through a file. 
     Every 4th line (phred values) will be parsed through and values extracted.
@@ -44,6 +57,7 @@ def populate_list(file):
 
 
 
+>>>>>>> ebe43797d7080511384a01cc445bc35fe9d414e3
 def validate_base_seq(seq,RNAflag):
     '''This function takes a string. Returns True if string is composed
     of only As, Ts (or Us if RNAflag is True), Gs, Cs. False otherwise. Case insensitive.'''
@@ -89,6 +103,9 @@ def fasta_homogenizer(inputfile_name: str, output_filename: str):
             if line.startswith(">") != True:
                 f.write(line)
                 
+<<<<<<< HEAD
+    f.close()
+=======
     f.close()
 
 
@@ -98,3 +115,4 @@ def get_file_name():
     parser.add_argument("-r", help="file name", required=True)
     return parser.parse_args()
 
+>>>>>>> ebe43797d7080511384a01cc445bc35fe9d414e3
