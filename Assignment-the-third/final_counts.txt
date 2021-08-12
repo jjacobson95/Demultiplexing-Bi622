@@ -1,0 +1,3 @@
+Index hopped Barcodes: 218718
+Low quality / Nonexistant barcodes: 199920349
+Correctly matched barcodes: 163107668

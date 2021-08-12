@@ -263,13 +263,12 @@ for I1,I2,R1,R2 in zip(index_file_1, index_file_2, read_file_1, read_file_2):
 #maybe export final counts to a file
 
 final_counts =open("final_counts.txt", "w")
-final_counts.write("Unmatched/mismatched barcodes: " + str(unmatched_barcode) + "\n")
+final_counts.write("Index hopped Barcodes: " + str(index_hopped_barcode) + "\n")
 final_counts.write("Low quality / Nonexistant barcodes: " + str(unreal_barcode)+ "\n")
-final_counts.write("Correctly matched barcodes: " + str(correct_barcode))
+final_counts.write("Correctly matched barcodes: " + str(correct_barcode) + "\n")
 
 print(" final sum mod = " , mod_1 +mod_2 + mod_3 + mod_0)
-print("final count = ", unmatched_barcode + correct_barcode + unreal_barcode)
-print("Unmatched = ", unmatched_barcode)
+print("final count = ", correct_barcode + unreal_barcode + index_hopped_barcode)
 print("Nonexistant = ", unreal_barcode)
 print("Correct = ", correct_barcode)
 print("index hopped: ", index_hopped_barcode)
