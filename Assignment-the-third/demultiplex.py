@@ -22,7 +22,7 @@ read_file_2 = "/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.g
 # read_file_2 = "/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-third/test_R4.fq"
 
 
-# Argparse file option (untested but it should work)
+# Argparse file option 
 # def read_and_index_file_input():
 #     parser = argparse.ArgumentParser(description = "Argparse")
 #     parser.add_argument ("-f", help="Read file 1 path location", required =True, type = str)
