@@ -4,8 +4,9 @@ import Bioinfo
 import gzip
 import matplotlib
 import matplotlib.pyplot as plt
+import argparse
 
-
+#index file
 index_file = "/projects/bgmp/shared/2017_sequencing/indexes.txt"
 
 # # real files
@@ -19,6 +20,25 @@ read_file_2 = "/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.g
 # index_file_1 = "/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-third/test_R2.fq"
 # index_file_2 = "/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-third/test_R3.fq"
 # read_file_2 = "/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-third/test_R4.fq"
+
+
+# Argparse file option (untested but it should work)
+# def read_and_index_file_input():
+#     parser = argparse.ArgumentParser(description = "Argparse")
+#     parser.add_argument ("-f", help="Read file 1 path location", required =True, type = str)
+#     parser.add_argument ("-s", help="Index file 1 path location", required =True, type = str)
+#     parser.add_argument ("-t", help="Index file 2 path location", required =True, type = str)
+#     parser.add_argument ("-l", help="Read file 2 path location", required =True, type = str)
+#     parser.add_argument ("-i", help="Index file path location", required =True, type = str)
+#     return parser.parse_args()
+
+# args = read_and_index_file_input()
+# read_file_1 = args.f
+# index_file_1 = args.s
+# index_file_2 = args.t
+# read_file_2 = args.l
+# index_file = args.i
+
 
 
 with open(index_file, "r") as fh:
@@ -36,16 +56,17 @@ with open(index_file, "r") as fh:
             barcode_counter_dictionary[barcode_name[count]] = 0
             count +=1
         
+#two copies of the barcode name list. These will be overwritten with 'file pointers' below        
 barcode_name_copy1 = barcode_name.copy()
 barcode_name_copy2 = barcode_name.copy()
 
 def reverse_compliment_check(barcode_1: str, barcode_2: str):
-    #update this docstring to include real check
-    #
-    #
     '''This function will take the barcodes from two files. 
-    It will determine if the barcode in file 2 is the reverse complement of file 1. 
-    If True it will return ‘1’. If false, it will return ‘2’.'''
+   Return 1: Reverse Compliment and proper barcodes
+   Return 2: Not Reverse Barcode
+   Return 3: Reverse Compliment but not in Dictionary
+   Return 4: Not reverse compliment but in dictionary (index hopped)
+    '''
     barcode_2_RC = ""
     barcode_1_remake = ""
     reverse_direction_counter = 0
@@ -91,6 +112,11 @@ def reverse_compliment_check(barcode_1: str, barcode_2: str):
     
 
 def sort_low_quality_barcodes(Qscore_1: str, Qscore_2: str):
+    '''
+    Input is barcode Qscores. This converts to phred scores and 
+    if the average is below Q30 it returns 6. If the average is greater or equal to 30
+    it returns 5.
+    '''
     Q1 = Bioinfo.qual_score(Qscore_1)
     Q2 = Bioinfo.qual_score(Qscore_2)
     if Q1 >= 30 and Q2 >= 30:
@@ -135,7 +161,8 @@ read_file_2 = gzip.open(read_file_2, "rt")
 # read_file_1 = open(read_file_1, "r")
 # read_file_2 = open(read_file_2, "r")
 
-#Begin stuff here!
+
+#Begin fun stuff here!
 
 #here are a bunch of counters, mostly used for debugging
 my_count = 0
@@ -144,8 +171,6 @@ mod_1 = 0
 mod_2 = 0
 mod_3 =0
 mod_sum = 0
-
-# barcode_counter_dictionary was created above with barcode name as key and 0 as value
 
 #here are counters for each file type
 correct_barcode =0
@@ -259,21 +284,20 @@ for I1,I2,R1,R2 in zip(index_file_1, index_file_2, read_file_1, read_file_2):
         else:
             print("This should never appear")
 
-#some debug stuff + final counts.
-#maybe export final counts to a file
 
+#final counts exported to a file
 final_counts =open("final_counts.txt", "w")
 final_counts.write("Index hopped Barcodes: " + str(index_hopped_barcode) + "\n")
 final_counts.write("Low quality / Nonexistant barcodes: " + str(unreal_barcode)+ "\n")
 final_counts.write("Correctly matched barcodes: " + str(correct_barcode) + "\n")
 
+#final counts + extra printed or sent to slurm file
 print(" final sum mod = " , mod_1 +mod_2 + mod_3 + mod_0)
 print("final count = ", correct_barcode + unreal_barcode + index_hopped_barcode)
 print("Nonexistant = ", unreal_barcode)
 print("Correct = ", correct_barcode)
-print("index hopped: ", index_hopped_barcode)
+print("Index hopped: ", index_hopped_barcode)
 print("Barcode counter dictionary: ", barcode_counter_dictionary)
-
 
 #Chart stuff
 correct_sum = 0
@@ -284,7 +308,7 @@ percent_list_barcodes = []
 percent_list_barcodes_names = []
 
 for value in barcode_counter_dictionary.values():
-    percent_list_barcodes.append(value /correct_sum)
+    percent_list_barcodes.append(value /correct_sum *100)
 
 for key in barcode_counter_dictionary.keys():
     percent_list_barcodes_names.append(key)
