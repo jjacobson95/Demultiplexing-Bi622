@@ -32,7 +32,7 @@ Bioinfo.init_list(medians_list)
 
 count = 0
 for value in sums_list:
-    sums_list[count] = value/(line_count[0]/4)
+    sums_list[count] = value/(line_count/4)
     count += 1
 
 
