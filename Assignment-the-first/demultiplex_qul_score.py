@@ -40,3 +40,4 @@ plt.grid(True)
 plt.savefig("/home/jjacobso/bgmp/bioinformatics/Bi622/Demultiplexing-Bi622/Assignment-the-first/Demultiplexing_the_first_histograms/histogram_R4.png")
 plt.show()
 
+ 
