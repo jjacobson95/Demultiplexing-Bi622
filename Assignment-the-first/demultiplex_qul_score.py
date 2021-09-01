@@ -7,8 +7,11 @@ import matplotlib.pyplot as plt
 import argparse
 
 #use -r filename
-args = Bioinfo.get_file_name()
-file = args.r
+parser = argparse.ArgumentParser()
+parser.add_argument("-R_file", default=1)
+
+args = parser.parse_args()
+file = args.R_file
 
 #path locations
 # read_file_1 = "/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz"
@@ -17,6 +20,7 @@ file = args.r
 # read_file_2 = "/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz"
 
 #this will only work for the two reads with 101 charcters
+#Change bioinfo populate list to 8 if needed.
 phred_list =[] 
 fred_list =Bioinfo.populate_list(file)
 phred_list = fred_list[0]
